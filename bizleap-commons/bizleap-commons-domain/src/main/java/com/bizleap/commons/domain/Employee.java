@@ -10,11 +10,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @Entity
 @Table(name = "employee")
 public class Employee extends AbstractEntity {
-
-	
 	private String title;
 	private int age, salary;
-	
 	
 	@ManyToOne
 	@JoinColumn(name="companyId")

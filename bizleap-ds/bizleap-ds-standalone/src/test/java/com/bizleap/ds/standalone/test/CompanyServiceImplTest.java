@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.bizleap.commons.domain.enums.ObjectFullnessLevel;
 import com.bizleap.commons.domain.exception.ServiceUnavailableException;
 import com.bizleap.ds.service.CompanyService;
 
@@ -29,11 +30,20 @@ public class CompanyServiceImplTest extends ServiceTest {
 		assertEquals(3,companyService.getAllCompany().size());
 	}
 	
-	//@Ignore
+	@Ignore
 	@Test
 	public void testFindByCompanyBoIdSingle() throws IOException,ServiceUnavailableException {		
 		assertNotNull(companyService.findByCompanyBoId("COMP01"));
 		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP01")));
 		assertEquals("Apple",companyService.findByCompanyBoIdSingle("COMP01").getName());
 	}
+	
+	//@Ignore
+	@Test
+	public void testFindByCompanyBoId() throws IOException,ServiceUnavailableException {		
+		assertNotNull(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.SUMMARY));
+		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.SUMMARY)));
+		assertEquals("Apple",companyService.findByCompanyBoIdSingle("COMP01").getName());
+	}
+	
 }

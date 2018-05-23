@@ -5,6 +5,7 @@ public enum EntityType {
 	EMPLOYEE("Employee","EMPL"),
 	USER("User","USER");
 	
+	
 	private String value;
 	private String boIdPrefix;
 	
